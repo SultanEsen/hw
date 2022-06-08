@@ -77,10 +77,3 @@ def create_figures():
 
 for i in create_figures():
     i.info()
-
-
-
-
-
-
-
