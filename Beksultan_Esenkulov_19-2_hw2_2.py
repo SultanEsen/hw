@@ -48,7 +48,7 @@ class Square(Figure):
         return self.side_length ** 2
 
     def info(self):
-        print(f'Square side lenght: {self.side_length} {self.unit}, perimeter: {self.calculate_perimeter()} {self.unit}'
+        print(f'Square side lenght: {self.side_length} {self.unit}, perimeter: {self.perimeter} {self.unit}'
               f', area: {self.calculate_area()} sq {self.unit}')
 
 
@@ -57,7 +57,7 @@ class Rectangle(Figure):
         super().__init__()
         self.__lenght = lenght
         self.__widht = width
-        self.perimeter = self.calculate_perimeter
+        self.perimeter = self.calculate_perimeter()
 
     @property
     def lenght(self):
@@ -83,9 +83,8 @@ class Rectangle(Figure):
 
     def info(self):
         print(f'Rectangle lenght: {self.lenght} {self.unit}, width: {self.widht} {self.unit}, '
-              f'perimeter: {self.calculate_perimeter()} {self.unit}'
+              f'perimeter: {self.perimeter} {self.unit}'
               f', area: {self.calculate_area()} sq {self.unit}')
-
 
 def create_figures():
     square1 = Square(3)
