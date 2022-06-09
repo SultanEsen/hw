@@ -1,3 +1,6 @@
+import time
+
+
 class Figure:
     unit = 'cm'
 
@@ -97,4 +100,5 @@ def create_figures():
 
 
 for i in create_figures():
+    time.sleep(1)
     i.info()

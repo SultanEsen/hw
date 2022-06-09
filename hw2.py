@@ -1,3 +1,6 @@
+import time
+
+
 class Company:
     def __init__(self, company_name, company_bank):
         self.company_name = company_name
@@ -17,14 +20,16 @@ class Person(Company):
         else:
             self.company_bank -= self.salary
             print(f'{self.first_name} {self.last_name} received salary of {self.salary} USD\n'
-                  f'Current balance of {self.company_name}: {self.company_bank}')
+                  f'Current balance of {self.company_name}: {self.company_bank}\n***')
 
     def person_info(self):
         print(f'First name: {self.first_name}\nLast name: {self.last_name}\nSalary: {self.salary} USD\n')
 
 
-person1 = Person('IBM', 1000000, 'Tom', 'Hanks', 10000)
+person1 = Person('IBM', 30000, 'Tom', 'Hanks', 10000)
 person1.person_info()
-person1.get_salary()
-person1.get_salary()
-person1.get_salary()
+c = 0
+while c != 5:
+    person1.get_salary()
+    c += 1
+    time.sleep(1)
