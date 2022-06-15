@@ -181,7 +181,6 @@ class Druid(Hero):
     def __init__(self, name, health, damage):
         Hero.__init__(self, name, health, damage, SuperAbility.ANGEL_OR_CROW)
 
-
     is_round_for_perform = randint(1, 5)
     angel_or_crow = randint(1, 2)  # 1 - angel, 2 - crow
 
@@ -199,10 +198,6 @@ class Druid(Hero):
                     round(boss.damage)
 
 
-
-
-
-
 round_number = 0
 
 
@@ -211,9 +206,7 @@ def boss_hits(boss, heroes):
         if hero.health > 0:
             hero.health -= boss.damage
             hero.damage_taken = boss.damage
-
-
-
+            
 
 def heroes_hit(boss, heroes):
     for hero in heroes:
@@ -221,11 +214,7 @@ def heroes_hit(boss, heroes):
                 and boss.defence_type != hero.super_ability_type:
             boss.health -= hero.damage
             hero.apply_super_power(boss, heroes)
-
-
-
-
-
+            
 
 def is_game_finished(boss, heroes):
     if boss.health <= 0:
@@ -236,7 +225,6 @@ def is_game_finished(boss, heroes):
         if hero.health > 0:
             all_heroes_dead = False
             break
-
     if all_heroes_dead:
         print("Boss won!!!")
     return all_heroes_dead
@@ -247,7 +235,6 @@ def print_statistics(boss, heroes):
     print("BOSS " + str(boss) + " Defence: " + str(boss.defence_type))
     for hero in heroes:
         print(hero)
-
 
 
 def play_round(boss, heroes):
@@ -279,20 +266,4 @@ def start_game():
         play_round(boss, heroes)
 
 
-
 start_game()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
