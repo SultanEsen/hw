@@ -9,6 +9,9 @@ class SuperAbility(Enum):
     SAVE_DAMAGE_AND_REVERT = 4
     HACK = 5
     ANGEL_OR_CROW = 6
+    ALTRUISM = 7
+    DEKU = 8
+
 
 
 class GameEntity:
@@ -199,8 +202,27 @@ class Druid(Hero):
                     round(boss.damage)
 
 
+class Golem(Hero):
+    def __init__(self, name, health, damage):
+        Hero.__init__(self, name, health, damage, SuperAbility.ALTRUISM)
+
+    def apply_super_power(self, boss, heroes):
+        for hero in heroes:
+            hero.health += (boss.damage * 0.2)
+            self.health -= (boss.damage * 0.2)
+        print('Golem applied super ability')
 
 
+class Deku(Hero):
+    def __init__(self, name, health, damage):
+        Hero.__init__(self, name, health, damage, SuperAbility.DEKU)
+
+    def apply_super_power(self, boss, heroes):
+        a = randint(1, 2)
+        if a == 1:
+            b = choice([0.2, 0.5, 1])
+            self.damage = self.damage + (self.damage * b)
+            self.health = self.health - (self.health * b)
 
 
 round_number = 0
@@ -268,9 +290,11 @@ def start_game():
     berserk = Berserk("John", 280, 20)
     assistant = Medic("Strange", 290, 10, 5)
     hacker = Hacker('Mark', 280, 0)
-    druid = Druid('Golum', 300, 0)
+    druid = Druid('Druid', 300, 0)
+    golum = Golem('Golum', 800, 5)
+    deku = Deku('Deku', 290, 15)
 
-    heroes = [warrior, magic, doc, berserk, assistant, hacker, druid]
+    heroes = [warrior, magic, doc, berserk, assistant, hacker, druid, golum, deku]
     medics = [doc, assistant]
 
     print_statistics(boss, heroes)
@@ -281,18 +305,3 @@ def start_game():
 
 
 start_game()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
